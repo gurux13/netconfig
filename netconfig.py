@@ -14,18 +14,17 @@ sta_if = network.WLAN(network.STA_IF)
 ap_if = network.WLAN(network.AP_IF)
 
 def read_yn(prompt):
-  print(prompt + '? [y/N] -> ', end='')
-  return sys.stdin.readline().strip().upper() == 'Y'
+  return input(prompt + '? [y/N] -> ').strip().upper() == 'Y'
 
 def setup():
   global config
   config = {}
-  print('SSID -> ', end='')
-  config['ssid'] = sys.stdin.readline().strip()
+  config['ssid'] = input('SSID -> ').strip()
   print('Password -> ', end='')
   config['password'] = sys.stdin.readline().strip()
+  print('')
   print('Connect timeout (in seconds) -> ', end='')
-  config['wait'] = int(sys.stdin.readline().strip())
+  config['wait'] = int(input('Connect timeout (in seconds) -> ').strip())
   config['verbose'] = read_yn('Verbose')
   print(' -- config --')
   print(config)
